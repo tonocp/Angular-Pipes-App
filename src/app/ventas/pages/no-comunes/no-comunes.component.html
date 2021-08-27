@@ -1,0 +1,92 @@
+<div class="text-layout">
+    <h1>Pipes no tan comunes</h1>
+    <p>
+        Pipes incluidos en Angular - Usualmente se encuentran en el <b>Common Module</b>.
+    </p>
+</div>
+<hr>
+<div class="grid">
+    <div class="col md:col-6 sm:col-9">
+        <p-fieldset legend="i18nSelect Pipe" 
+                    [toggleable]="true"
+                    [collapsed]="true">
+            En este ejemplo tenemos dos variables llamadas <b>'nombre'</b> y <b>'genero'</b> y según el valor que tenga, cambia la siguiente frase refiriéndose al género de la persona.
+            <hr>
+            Saludos <strong>{{ nombre }}</strong>, es un placer <strong>{{ genero | i18nSelect:invitacionMap}}</strong> a nuestro evento del sábado por la noche. 
+            <p>
+                <button (click)="cambiaPersona(nombre)" pButton type="button" label="Cambiar Persona" class="p-button-info"></button>
+            </p>
+            
+        </p-fieldset>
+    </div>
+    <div class="col md:col-6 sm:col-9">
+        <p-fieldset legend="i18nPlural Pipe"
+                    [toggleable]="true"
+                    [collapsed]="true">
+            En este ejemplo tenemos un array de <b>'clientes'</b> y según el valor que tenga, cambia la siguiente frase haciéndola singular o plural e incluso enumerando.
+            <hr>
+            Actualmente <strong>{{clientes.length | i18nPlural:clientesMap}}</strong>
+            <p>
+                <button (click)="clientes.pop()" pButton type="button" label="Borrar Cliente" class="p-button-danger"></button>                
+            </p>
+        </p-fieldset>
+    </div>
+    <div class="col md:col-6 sm:col-9">
+        <p-fieldset legend="Slice Pipe"
+                    [toggleable]="true"
+                    [collapsed]="true">
+            En este ejemplo tenemos un <b>arrayPersonas</b> con distintos nombres que iremos seleccionando por índice.
+            <hr>
+            <b>Original</b>
+            <pre> {{ arrayPersonas }} </pre>
+            <b>arrayPersonas | slice:0:2</b> --> índice de inicio : índice de corte (excluyente)
+            <pre> {{ arrayPersonas | slice:0:2 }} </pre>
+            <b>arrayPersonas | slice:1:2</b>
+            <pre> {{ arrayPersonas | slice:1:2 }} </pre>
+            <b>arrayPersonas | slice:1:3</b>
+            <pre> {{ arrayPersonas | slice:1:3 }} </pre>
+            <b>arrayPersonas |   slice:3:3</b>
+            <pre> {{ arrayPersonas | slice:3:3 }} </pre>
+            <b>nombre | slice:0:4</b>
+            <pre> {{ nombre | slice:0:4 }} </pre>
+        </p-fieldset>
+    </div>
+
+    <div class="col md:col-6 sm:col-9">
+        <p-fieldset legend="KeyValue Pipe"
+                    [toggleable]="true"
+                    [collapsed]="true">
+            En este ejemplo tenemos un objeto llamado <b>'persona'</b> con sus diferentes atributos y valores, los cuales mostramos con un <b>*ngFor="let item of persona | keyvalue"</b> y llamando a los resultados <b>item.key</b> e <b>item.value</b>
+            <hr>
+            <ul>                
+                <li *ngFor="let item of persona | keyvalue">
+                    <b>{{ item.key | titlecase }}</b> : {{ item.value }}
+                </li>
+            </ul>
+
+        </p-fieldset>
+    </div>
+    <div class="col md:col-6 sm:col-9">
+        <p-fieldset legend="JSON Pipe"
+                    [toggleable]="true"
+                    [collapsed]="true">
+            En este ejemplo tenemos un objeto llamado <b>'persona'</b> con sus diferentes atributos y valores en formato <b>JSON</b>
+            <hr>            
+            <pre>{{ heroes | json }}</pre>
+        </p-fieldset>
+    </div>
+    <div class="col md:col-6 sm:col-9">
+        <p-fieldset legend="Async Pipe"
+                    [toggleable]="true"
+                    [collapsed]="true">
+            En este ejemplo tenemos una función <b>interval()</b> que devuelve un <b>Observable</b> el cual emite cada segundo.
+            <hr>            
+            <pre>{{ miObservable | async }}</pre>
+            Y en este otro ejemplo tenemos un objeto de tipo <b>Promise</b> el cual espera 5 segundos para emitir un <b>string</b> que dice <b>'Hola, soy un Promise!'</b>
+            <hr>
+            <pre *ngIf="!(valorPromesa | async)">Esperando promise...</pre>
+            <pre>{{ valorPromesa | async }}</pre>
+        </p-fieldset>
+    </div>
+
+</div>

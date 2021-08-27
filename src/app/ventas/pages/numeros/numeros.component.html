@@ -1,0 +1,37 @@
+<div class="text-layout">
+    <h1>Números, Monedas y Porcentajes</h1>
+    <p>
+        Pipes incluidos en Angular - Usualmente se encuentran en el <b>Common Module</b>.
+    </p>
+    <hr>
+    <p>
+        Pipes para usar con variables de tipo <b>number</b>.
+    </p>
+</div>
+
+<div class="grid">
+    <div class="col-4">
+        <p-card header="number"
+                subheader="(Variable + 1000000) | number:'.2-2'">
+            <strong>Variable Original = </strong> {{ventasNetas}}
+            <hr>
+            <strong>Resultado = </strong> {{ (ventasNetas + 1000000) | number:'.2-2' }}
+        </p-card>
+    </div>
+    <div class="col-4">
+        <p-card header="currency"
+                subheader="(ventasNetas + 2000000) | currency:'CAD':'symbol-narrow':'.4-4'">
+            <strong>Variable Original = </strong> {{ventasNetas}}
+            <hr>
+            <strong>Resultado = </strong> {{ (ventasNetas + 2000000) | currency:'CAD':'symbol-narrow':'.4-4' }}
+        </p-card>
+    </div>
+    <div class="col-4">
+        <p-card header="percent"
+                subheader="porcentaje | percent:'.2-2'">       
+            <strong>Variable Original = </strong> {{porcentaje}}
+            <hr>
+            <strong>Resultado = </strong> {{ porcentaje | percent:'.2-2' }}
+        </p-card>
+    </div>
+</div>

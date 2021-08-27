@@ -1,0 +1,89 @@
+<div class="text-layout">
+    <h1>Textos y fechas</h1>
+    <p>
+        Pipes incluidos en Angular - Usualmente se encuentran en el <b>Common Module</b>.
+    </p>
+    <hr>
+    <h2>Textos</h2>
+    <p>
+        Pipes para usar con variables de tipo <b>string</b>.
+    </p>
+</div>
+
+<div class="grid">
+    <div class="col-4">
+        <p-card header="uppercase"
+                subheader="nombreLower | uppercase">
+            <strong>Variable Original = </strong>{{nombreLower}}
+            <hr>
+            <strong>Resultado = </strong> {{nombreLower | uppercase}}
+        </p-card>
+    </div>
+    <div class="col-4">
+        <p-card header="lowercase"
+                subheader="nombreUpper | lowercase">
+            <strong>Variable Original = </strong> {{nombreUpper}}
+            <hr>
+            <strong>Resultado = </strong> {{nombreUpper | lowercase}}
+        </p-card>
+    </div>        
+    <div class="col-4">
+        <p-card header="titlecase"
+                subheader="nombreCompleto | titlecase">
+            <strong>Variable Original = </strong> {{nombreCompleto}}
+            <hr>
+            <strong>Resultado = </strong> {{nombreCompleto | titlecase}}
+        </p-card>
+    </div>
+</div>
+
+<div class="text-layout">
+    <h2>Fechas</h2>
+    <p>
+        Pipes para mostrar las variables de tipo <b>Date</b>.
+    </p>
+</div>
+<div class="grid">
+    <div class="col-6">
+        <p-card>
+            <ul>
+                <li><strong>Variable fecha date = new(Date) --> </strong> fecha </li>
+                <li><strong>Pipe Date --> </strong> fecha | date </li>
+                <li><strong>Argumento 'short' --> </strong> fecha | date:'short' </li>
+                <li><strong>Argumento 'long' --> </strong> fecha | date:'long' </li>
+                <li><strong>Argumento personalizado --> </strong> fecha | date:''HH:mm:ss - dd/MM/yyyy - GGGG'' </li>
+            </ul>
+
+            <hr>
+            
+            <ul>
+                <li><strong>Argumento Long y modificar Locale --> </strong> fecha | date:'long':'GMT+6' </li>
+                <li><strong>Argumento Long y modificar Locale --> </strong> fecha | date:'long':'GMT-6' </li>
+                <li><strong>Argumento Long y modificar Idioma --> </strong> fecha | date:'long':' ':'en' </li>
+                <li><strong>Argumento Long y modificar Idioma --> </strong> fecha | date:'long':' ':'fr' </li>
+            </ul>
+
+        </p-card>
+    </div>
+    <div class="col-6">
+        <p-card>
+            <ul>
+                <li> {{fecha}} </li>
+                <li> {{fecha | date}} </li>
+                <li> {{fecha | date:'short'}} </li>
+                <li> {{fecha | date:'long'}} </li>
+                <li> {{fecha | date:'HH:mm:ss - dd/MM/yyyy - GGGG'}} </li>
+            </ul>
+
+            <hr>
+            
+            <ul>
+                <li> {{fecha | date:'long':'GMT+6'}} </li>
+                <li> {{fecha | date:'long':'GMT-6'}} </li>
+                <li> {{fecha | date:'long':' ':'en'}} </li>
+                <li> {{fecha | date:'long':' ':'fr'}} </li>
+            </ul>
+
+        </p-card>
+    </div>
+</div>
