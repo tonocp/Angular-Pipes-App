@@ -1,1 +1,87 @@
-<p>ordenar works!</p>
+<div class="text-layout">
+    <h1>Pipes Personalizados</h1>
+    <p>
+        Pipes creados por <b>{{ 'nosotros.' | mayusculas:enMayusculas }}</b>
+    </p>
+    <p-card>
+        El <i>string</i> superior en negrita <b>nosotros</b>, es modificado por un "Pipe Personalizado" que hemos creado usando <i>Pipe</i> y <i>PipeTransform</i> de la librería de <b>@angular/core</b>, el cual es llamado por una función a través del botón de la <b>PrimeToolbar</b> siguiente.
+        <br>
+        Además en el siguiente apartado, hemos creado <b>pipes de ordenación</b>, los cuales se ejecutan al pulsar los siguientes botones de colores. Dichos botones mandan un argumento al pipe que varía el orden a tener en cuenta en las diferentes columnas.
+    </p-card>
+    <br>
+</div>
+
+<p-toolbar>
+    <div class="p-toolbar-group-left"></div>
+    
+    <div class="p-toolbar-group-right">
+        <button pButton
+                label="Toggle mayusculas del encabezado" 
+                icon="pi pi-sort"
+                (click)=" cambiar() "
+                class="mr-1 p-button-warning"></button>
+        <button pButton
+                label="Ordena por Nombre" 
+                icon="pi pi-sort"
+                (click)=" cambiarOrden('nombre') "
+                class="mr-1 p-button-info"></button>
+
+        <button pButton
+                label="Ordena por Vuela" 
+                icon="pi pi-sort"
+                (click)=" cambiarOrden('vuela') "
+                class="mr-1 p-button-success"></button>
+
+        <button pButton
+                label="Ordena por Color" 
+                icon="pi pi-sort"
+                (click)=" cambiarOrden('color') "
+                class="mr-1 p-button-help"></button>
+    </div>
+</p-toolbar>
+<br>
+<div class="p-grid">
+    <div class="p-col mt-2">
+        <p-table [value]=" heroes  | slice:0 | ordenar:ordenarPor ">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Vuela</th>
+                    <th>Color Principal</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-heroe>
+                <tr>
+                    <td>{{ heroe.nombre }}</td>
+                    <td>{{ heroe.vuela | vuela | titlecase }}</td>
+                    <td>{{ heroe.color }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+<hr>
+<p-card>
+    La siguiente tabla también ha sido creada con <b>PrimeNG Table</b> pero utilizando la directiva <b>SortableColumn</b> en vez de nuestros Pipes Personalizados.
+</p-card>
+<hr>
+<div class="p-grid">
+    <div class="p-col mt-2">
+        <p-table [value]=" heroes | slice:0 ">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="nombre">Nombre <p-sortIcon field="nombre"></p-sortIcon></th>
+                    <th pSortableColumn="vuela">Vuela <p-sortIcon field="vuela"></p-sortIcon></th>
+                    <th pSortableColumn="color">Color Principal <p-sortIcon field="color"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-heroe>
+                <tr>
+                    <td>{{ heroe.nombre }}</td>
+                    <td>{{ heroe.vuela | vuela | titlecase }}</td>
+                    <td>{{ heroe.color }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
